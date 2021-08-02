@@ -13,9 +13,8 @@ void setup() {
     Serial.println("Couldn't find RTC");
     while (1);
   }
-  
-  //rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
-  
+
+    
   if (! rtc.initialized()) {
     Serial.println("RTC is NOT running!");
 //    rtc.adjust(DateTime(2021, 1, 16, 0, 0, 0));
