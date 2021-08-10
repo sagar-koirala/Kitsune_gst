@@ -1,24 +1,30 @@
-#define sp_volt A2
-#define sp_current  A5
-#define batt_volt A3
-#define batt_current A4
+#define sp_volt_pin A4
+#define sp_current_pin  A1
+#define batt_volt_pin A5
+#define batt_current_pin A4
 
+float sp_volt = 0;
+float sp_current = 0;
+float batt_volt = 0;
+float batt_current = 0;
 
 void setup() {
-pinMode(sp_volt, INPUT);
-pinMode(sp_current, INPUT);
-pinMode(batt_volt, INPUT);
-pinMode(batt_current, INPUT);
+  pinMode(sp_volt_pin, INPUT);
+  pinMode(sp_current_pin, INPUT);
+  pinMode(batt_volt_pin, INPUT);
+  pinMode(batt_current_pin, INPUT);
 
-Serial.begin(9600);
+  Serial.begin(9600);
 }
 
 void loop() {
-
-Serial.println(analogRead(sp_volt));
-Serial.println(analogRead(sp_current));
-Serial.println(analogRead(batt_volt));
-Serial.println(analogRead(batt_current));
-
+  batt_volt = map(analogRead(batt_volt_pin), 0, 654, 0, 420)/100.0;
+  Serial.print("Battery_Volt: ");
+  Serial.println(batt_volt);
+  sp_volt = map(analogRead(sp_volt_pin), 0, 930, 0, 600)/100.0;
+  Serial.print("SolarPanel_Volt: ");
+  Serial.println(sp_volt);
+  Serial.println();
+  delay(100);
 
 }
