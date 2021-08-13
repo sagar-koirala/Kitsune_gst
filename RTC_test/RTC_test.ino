@@ -17,13 +17,14 @@ void setup() {
     
   if (! rtc.initialized()) {
     Serial.println("RTC is NOT running!");
-//    rtc.adjust(DateTime(2021, 1, 16, 0, 0, 0));
-    //rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
+    rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));    //adjust time after a power loss
     }
+    rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));    //adjust time on previously configured device
+    rtc.start();
 }
 
 void loop() {
-    DateTime now = rtc.now();
+    DateTime now = (rtc.now()+ TimeSpan(0, 0, 0, 3));
     Serial.print(now.year(), DEC);
     Serial.print('/');
     Serial.print(now.month(), DEC);
