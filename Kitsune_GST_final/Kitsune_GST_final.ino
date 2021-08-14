@@ -48,8 +48,10 @@ void loop() {
         Serial.print(" ");
     }
     Serial.println("");
+    Serial.println("");
+    Serial.println("");
     LoRa.beginPacket();
-    LoRa.write(pckt,16);
+    LoRa.write(pckt,sizeof(pckt));
     LoRa.endPacket();
    
     counter++;
@@ -66,7 +68,7 @@ void createPackt() {
   pckt[6] = now.second();
 //  pckt[7] = now.second();
 //  pckt[8] = now.second();
-//  pckt[9] = now.second();
+//  pckt[9] = now.second();e
   pckt[10] = analogRead(batt_volt_pin);
   pckt[11] = analogRead(sp_volt_pin);
   pckt[12] = analogRead(batt_current_pin);
