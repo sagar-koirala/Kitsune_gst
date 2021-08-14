@@ -4,6 +4,7 @@
 int counter = 0;
 
 void setup() {
+//  LoRa.setPins(7, 8, 3);
   Serial.begin(9600);
   while (!Serial);
 
@@ -21,11 +22,11 @@ void loop() {
 
   // send packet
   LoRa.beginPacket();
-  LoRa.print("hello ");
+  LoRa.print("hello from GST, Transmission no: ");
   LoRa.print(counter);
   LoRa.endPacket();
 
   counter++;
 
-  delay(5000);
+  delay(800);
 }
