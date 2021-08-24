@@ -3,7 +3,7 @@
 
 char daysOfTheWeek[7][12] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 uint8_t pckt[16];
-uint16_t Year = 0000000000000000;
+uint16_t Year;
 
 void setup() {
   LoRa.setPins(7, 8, 3);
@@ -60,6 +60,7 @@ void loop() {
     Serial.print(pckt[7], DEC);
     Serial.println();
     Serial.println();
+    delay(500);
   }
 
 }
