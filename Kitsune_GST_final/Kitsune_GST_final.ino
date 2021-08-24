@@ -44,7 +44,7 @@ void loop() {
     
     for(int i = 0; i<16;i++)
     {
-        Serial.print(pckt[i],HEX);
+        Serial.print(pckt[i],DEC);
         Serial.print(" ");
     }
     Serial.println("");
@@ -59,19 +59,17 @@ void loop() {
 
 void createPackt() {
   DateTime now = (rtc.now()+ TimeSpan(0, 0, 0, 3));
-  pckt[0] = now.year();
-  pckt[1] = now.month();
-  pckt[2] = now.day();
-  pckt[3] = now.dayOfTheWeek();
-  pckt[4] = now.hour();
-  pckt[5] = now.minute();
-  pckt[6] = now.second();
-//  pckt[7] = now.second();
+  pckt[0] = now.year()>>8;
+  pckt[1] = now.year();
+  pckt[2] = now.month();
+  pckt[3] = now.day();
+  pckt[4] = now.dayOfTheWeek();
+  pckt[5] = now.hour();
+  pckt[6] = now.minute();
+  pckt[7] = now.second();
 //  pckt[8] = now.second();
 //  pckt[9] = now.second();e
   pckt[10] = analogRead(batt_volt_pin);
   pckt[11] = analogRead(sp_volt_pin);
   pckt[12] = analogRead(batt_current_pin);
-//  pckt[0] = now.second();
-//  pckt[0] = now.second();
 }
